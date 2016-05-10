@@ -1,0 +1,16 @@
+{% extends 'SantorMainBundle::layout.html.twig' %}
+
+{% block title %}Santor Edition - Contact{% endblock %}
+
+    {% block mainTitle %}
+        <h1 class="title-{{ class_body }}">Formulaire de contact</h1>
+    {% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        {{ form(form, { 'attr': {'class': 'form-group'}}) }}
+    </div>
+
+{% endblock %}
+

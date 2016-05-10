@@ -1,0 +1,4 @@
+santor_main:
+    resource: "@SantorMainBundle/Resources/config/routing.yml"
+    prefix:   /
+

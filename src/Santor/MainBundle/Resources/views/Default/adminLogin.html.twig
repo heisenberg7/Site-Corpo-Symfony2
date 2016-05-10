@@ -1,0 +1,36 @@
+{% extends 'SantorMainBundle::layout.html.twig' %}
+
+{% block title %}Santor Edition - Admin connexion{% endblock %}
+
+    {% block mainTitle %}
+        <h1 class="title-{{ class_body }}">Connexion à l'espace administrateur</h1>
+    {% endblock %}
+
+{% block body %}
+
+    <p>
+        Bienvenue sur l'interface de connexion
+    </p>
+
+    <form action="{{ path("login_check") }}" method="post" id="login">
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="_password" />
+        </div>
+
+        <button type="submit" class="sf-button">
+            <span class="border-l">
+                <span class="border-r">
+                    <span class="btn-bg">Login</span>
+                </span>
+            </span>
+        </button>
+    </form>
+
+{% endblock %}
+

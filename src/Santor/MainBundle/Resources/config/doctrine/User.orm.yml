@@ -1,0 +1,50 @@
+Santor\MainBundle\Entity\User:
+    type: entity
+    table: User
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        password:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        salt:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        email:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        prenom:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

@@ -1,0 +1,36 @@
+#DEFAULT_CONTROLLER
+
+santor_main_homepage:
+    path:     /
+    defaults: { _controller: SantorMainBundle:Default:index }
+
+santor_activites_mediScoop:
+    path:     /activites/mediScoop/
+    defaults: { _controller: SantorMainBundle:Default:mediscoop }
+
+santor_societe_presentation:
+    path:     /societe/presentation/
+    defaults: { _controller: SantorMainBundle:Default:presentation }
+
+santor_societe_contact:
+    path:     /societe/contact/
+    defaults: { _controller: SantorMainBundle:Default:contact }
+
+comment_success:
+    path:     /form_success
+    defaults: { _controller: SantorMainBundle:Default:formSuccess }
+
+#USER_CONTROLLER
+
+form_login:
+    path:     /hello/{name}
+    defaults: { _controller: SantorMainBundle:User:index }
+
+login:
+    path:     /login
+    defaults: { _controller: SantorMainBundle:User:login }
+
+login_check:
+    path:     /login_check
+    defaults: { _controller: SantorMainBundle:User:securityCheck }
+

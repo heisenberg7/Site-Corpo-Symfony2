@@ -1,0 +1,56 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        Santor\MainBundle\Entity\User: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        personal_provider:
+            entity: { class: SantorMainBundle:User, property: username }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern:  ^/demo/secured/login$
+            security: false
+
+        #secured_area:
+        #    pattern:    ^/demo/secured/
+        #    form_login:
+        #        check_path: _security_check
+        #        login_path: _demo_login
+        #    logout:
+        #        path:   _demo_logout
+        #        target: _demo
+        #anonymous: ~
+        #http_basic:
+        #    realm: "Secured Demo Area"
+
+        personal_area:
+                    pattern: ^/securite
+                    provider: personal_provider
+                    form_login:
+                        check_path: securite.login_check
+                        login_path: securite.login
+                        default_target_path: securite.home
+                    logout:
+                        path:  securite.logout
+                        target: /securite/login
+                    anonymous: ~
+                    #http_basic:
+                    #    realm: "Secured Demo Area"
+
+    access_control:
+        - { path: ^/securite/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/securite, roles: ROLE_ADMIN }

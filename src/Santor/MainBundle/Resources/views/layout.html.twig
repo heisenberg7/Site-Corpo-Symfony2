@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        {%  if  class_body is defined %}
+            {% if class_body == "success"%}
+                <meta http-equiv="refresh" content="3;url='/">
+            {% endif %}
+        {% endif %}
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        {% block stylesheets %}
+            <link href="{{ asset('bundles/santor/assets/css/global.css') }}" type="text/css" rel="stylesheet">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="{% if class_body is defined %} {{ class_body }} {% endif %}">
+        {% block header %}
+            <header>
+                <div class="logo-santor">
+                    <img src="{{ asset('bundles/santor/assets/img/logo-santor.jpg') }}" alt="Logo Santor">
+                </div>
+
+                {% block menu %}
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container-fluid">
+
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand">Santor Editions</a>
+                            </div>
+
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="{{ path('santor_main_homepage') }}">Accueil</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Nos activités <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="{{ path('santor_activites_mediScoop') }}">mediScoop</a></li>
+                                            <li><a href="#">iMedia</a></li>
+                                            <li><a href="#">mediPoster</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Les inscriptions</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Les dosettes de café</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">La société<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="{{ path('santor_societe_presentation') }}">Présentation</a></li>
+                                            <li><a href="#">Recrutement</a></li>
+                                            <li><a href="{{ path('santor_societe_contact') }}">Contact</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                {% endblock %}
+                <a href="{{ path('login') }}">Partie ADMIN</a>
+            </header>
+        {% endblock %}
+
+        {% block mainTitle %}
+
+        {% endblock %}
+
+
+        {% block body %}
+            {# Hello {{ name }}! #}
+        {% endblock %}
+
+
+        {% block footer %}
+            <footer>
+
+            </footer>
+        {% endblock %}
+
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('bundles/santor/assets/js/libs/bootstrap/js/bootstrap.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/santor/assets/js/src/main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>
